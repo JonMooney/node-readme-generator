@@ -23,80 +23,86 @@ function renderLicenseSection(license) {
   }
 }
 
-function renderToc(){
+function renderToc(data){
+  let markdown = `- [Description](#description)`;
+  
+  if(data.installation != ''){
+    markdown += `\n- [Installation](#installation)`;
+  }
 
+  if(data.usage != ''){
+    markdown += `\n- [Usage](#usage)`;
+  }
+
+  if(data.license){
+    markdown += `\n- [License](#license)`;
+  }
+
+  if(data.contributing != ''){
+    markdown += `\n- [Contributing](#contributing)`;
+  }
+
+  if(data.tests != ''){
+    markdown += `\n- [Tests](#tests)`;
+  }
+
+  if(data.questions != ''){
+    markdown += `\n- [Questions](#questions)`;
+  }
+
+  return markdown;
 }
 
 function generateMarkdown(data) {
   // Title (required)
-  const markdown = `# ${data.title}`;
-
+  let markdown = `# ${data.title}`;
+  
   // License Badge (if user selected a license) (boolean)
   if(data.license){
-    markdown += renderLicenseBadge(data.license);
+    markdown += '\n' + renderLicenseBadge(data.license)
+  }
+  
+  // Desription (required)
+  markdown += `\n\n## Description\n\n${data.description}`;
+    
+  // Table of contents (boolean)
+  if(data.toc){
+    markdown += `\n\n## Table of Contents\n\n${renderToc(data)}`;
   }
 
-  // Desription (required)
-  markdown += `
-    ## Description
-    ${data.description}
-    `;
+  // Installation
+  if(data.installation != ''){
+    markdown += `\n\n## Installation\n\n${data.installation}`;
+  }
   
-// Table of contents (boolean)
-if(data.toc){
-  markdown += `
-  ## Table of Contents
-  ${renderToc(data)}
-  `;
+  // Usage
+  if(data.usage != ''){
+    markdown += `\n\n## Usage\n\n${data.usage}`;
+  }
+
+  // License
+  if(data.license){
+    markdown += `\n\n## License\n\n${renderLicenseSection(data.license)}`;
+  }
+
+  // Contributing
+  if(data.contributing != ''){
+    markdown += `\n\n## Contributing\n\n${data.contributing}`;
+  }
+
+  // Tests
+  if(data.tests != ''){
+    markdown += `\n\n## Tests\n\n${data.tests}`;
+  }
+
+  // Questions
+  if(data.questions != ''){
+    markdown += `\n\n## Questions\n\n${data.questions}`;
+  }
+
+  return markdown;
 }
 
-// Installation
-if(data.installation != ''){
-  markdown += `
-  ## Installation
-  ${data.installation}
-  `;
-}
-
-// Usage
-if(data.usage != ''){
-  markdown += `
-  ## Usage
-  ${data.usage}
-  `;
-}
-
-// License
-if(data.license){}
-  markdown += `
-  ## License
-  ${renderLicenseSection(data.license)}
-  `;
-}
-
-// Contributing
-if(data.contributing != ''){
-  markdown += `
-  ## Contributing
-  ${data.contributing}
-  `;
-}
-
-// Tests
-if(data.tests != ''){
-  markdown += `
-  ## Tests
-  ${data.tests}
-  `;
-}
-
-// Common Questions
-if(data.questions != ''){
-  markdown += `
-  ## Common Questions
-  ${data.questions}
-  `;
-}
 
 const data = {
   title: "Sample Project Title",
@@ -104,13 +110,15 @@ const data = {
   description: "Sample description",
   toc: true,
   installation: 'sample install info',
-  usage: 'sample usage info',
-  contributing: 'contributing info'
-  tests: 'sample tests'
+  usage: '',
+  contributing: 'contributing info',
+  tests: 'sample tests',
   questions: 'sample questions'
 
 }
 
+console.log('hello');
+console.log(data);
 console.log(generateMarkdown(data));
 
 module.exports = generateMarkdown;
