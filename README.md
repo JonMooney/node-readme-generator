@@ -33,7 +33,7 @@ This is a Node.js application that uses command line input to help build a pre-f
 
 ### Screenshot:
 
-![Screenshot](./assets/images/screen1.jpg)
+![Screenshot](./assets/images/screen1.JPG)
 
 ## License
 
