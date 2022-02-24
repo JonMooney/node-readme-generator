@@ -1,4 +1,4 @@
-// If there is no license, return an empty string
+// Write the license badge
 function renderLicenseBadge(license) {
   if(!license){
     return '';
@@ -11,7 +11,7 @@ function renderLicenseBadge(license) {
 
 }
 
-// If there is no license, return an empty string
+// Write the license section
 function renderLicenseSection(license) {
   if(!license){
     return '';
@@ -23,6 +23,8 @@ function renderLicenseSection(license) {
   }
 }
 
+// Table of Contents function
+// Only writes the toc items that are present in the data object
 function renderToc(data){
   let markdown = `- [Description](#description)`;
   
@@ -102,23 +104,5 @@ function generateMarkdown(data) {
 
   return markdown;
 }
-
-
-const data = {
-  title: "Sample Project Title",
-  license: 'GPL v3',
-  description: "Sample description",
-  toc: true,
-  installation: 'sample install info',
-  usage: '',
-  contributing: 'contributing info',
-  tests: 'sample tests',
-  questions: 'sample questions'
-
-}
-
-console.log('hello');
-console.log(data);
-console.log(generateMarkdown(data));
 
 module.exports = generateMarkdown;
