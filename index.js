@@ -43,6 +43,26 @@ inquirer.prompt([
       }
     },
     {
+        // GitHub username (required)
+        type: 'input',
+        name: 'username',
+        message: 'Enter your GitHub username: ',
+        validate: projDescInput => {
+          if (projDescInput) {
+            return true;
+          } else {
+            console.log('Please enter your GitHub username!');
+            return false;
+          }
+        }
+    },
+    {
+        // Email
+        type: 'input',
+        name: 'email',
+        message: 'Enter your email address: ',
+    },
+    {
         // Table of Contents (Y or N Boolean)
         type: 'confirm',
         name: 'toc',

@@ -98,8 +98,15 @@ function generateMarkdown(data) {
   }
 
   // Questions
+  markdown += `\n\n## Questions\n\nView my [GitHub Page](https://github.com/${data.username})`;
+  
+  if(data.email != ''){
+    markdown += `\n\nSend me an email @ [${data.email}](mailto:${data.email})`;
+  }
+
+
   if(data.questions != ''){
-    markdown += `\n\n## Questions\n\n${data.questions}`;
+    markdown += `\n\n${data.questions}`;
   }
 
   return markdown;
