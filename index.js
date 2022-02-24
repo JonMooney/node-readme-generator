@@ -4,7 +4,7 @@ const fs = require('fs')
 
 // Write README file with data from inquirer prompts
 function writeToFile(data) {
-    fs.writeFile('./README.md', data, err => {
+    fs.writeFile('./output/README.md', data, err => {
         if (err) {
             console.log(err);
         }else{
