@@ -35,6 +35,10 @@ This is a Node.js application that uses command line input to help build a pre-f
 
 ![Screenshot](./assets/images/screen1.JPG)
 
+### Video Walkthrough:
+
+https://user-images.githubusercontent.com/95663736/155817694-e4a2d0c7-fca0-45c5-98e6-16321ab64302.mp4
+
 ## License
 
 This project is covered under the [GNU General Public License v3.0](https://www.gnu.org/licenses/)
